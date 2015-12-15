@@ -130,7 +130,7 @@ namespace Akka.Remote.Tests.Performance
         public void Cleanup()
         {
             if (!_resetEvent.IsSet)
-                _resetEvent.Wait(TimeSpan.FromSeconds(10)); // wait indefinitely until the event is set
+                _resetEvent.Wait(); // wait indefinitely until the event is set
             _resetEvent.Dispose();
             System1.Shutdown();            
             System1.AwaitTermination(TimeSpan.FromSeconds(2));

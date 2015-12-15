@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akka.Remote.Tests.Performan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akka.Tests.Performance", "src\Akka.Tests.Performance\Akka.Tests.Performance.csproj", "{B17DEDCB-D2AA-472D-82A0-D242B711F488}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4CA94EBD-D670-4A08-AA83-15EA90F4CF6D}"
+	ProjectSection(SolutionItems) = preProject
+		build.cmd = build.cmd
+		build.fsx = build.fsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

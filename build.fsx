@@ -1,4 +1,4 @@
-#I @"src/packages/FAKE/tools"
+#I @"packages/FAKE/tools"
 #r "FakeLib.dll"
 
 open System
@@ -13,7 +13,8 @@ open Fake.TaskRunnerHelper
 //-------------------------------------------------------------------------------
 
 let configuration = "Release"
-
+let shouldNugetUpdate = hasBuildParam "version"
+let akkaVersion = getBuildParam "version"
 
 //--------------------------------------------------------------------------------
 // Directories

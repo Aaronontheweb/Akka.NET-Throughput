@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akka.Remote.Tests.Performance", "src\Akka.Remote.Tests.Performance\Akka.Remote.Tests.Performance.csproj", "{453DD4B1-64B8-4B50-BFDA-3489E32D30D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akka.Tests.Performance", "src\Akka.Tests.Performance\Akka.Tests.Performance.csproj", "{B17DEDCB-D2AA-472D-82A0-D242B711F488}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{453DD4B1-64B8-4B50-BFDA-3489E32D30D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{453DD4B1-64B8-4B50-BFDA-3489E32D30D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{453DD4B1-64B8-4B50-BFDA-3489E32D30D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{453DD4B1-64B8-4B50-BFDA-3489E32D30D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B17DEDCB-D2AA-472D-82A0-D242B711F488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B17DEDCB-D2AA-472D-82A0-D242B711F488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B17DEDCB-D2AA-472D-82A0-D242B711F488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B17DEDCB-D2AA-472D-82A0-D242B711F488}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

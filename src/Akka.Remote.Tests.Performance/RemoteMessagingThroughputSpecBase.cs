@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using Akka.Actor;
 using Akka.Configuration;
 using Akka.Util.Internal;
@@ -13,7 +14,7 @@ namespace Akka.Remote.Tests.Performance
     public abstract class RemoteMessagingThroughputSpecBase
     {
         private const string RemoteMessageCounterName = "RemoteMessageReceived";
-        private const long RemoteMessageCount = 10000;
+        private const long RemoteMessageCount = 100000;
         private Counter _remoteMessageThroughput;
         private readonly ManualResetEventSlim _resetEvent = new ManualResetEventSlim(false);
         private IActorRef _receiver;
@@ -96,7 +97,7 @@ namespace Akka.Remote.Tests.Performance
            Description =
                "Measures the throughput of Akka.Remote over a particular transport using one-way messaging",
            RunMode = RunMode.Iterations, NumberOfIterations = 13, TestMode = TestMode.Measurement,
-           RunTimeMilliseconds = 1000)]
+           RunTimeMilliseconds = 1000, Skip = "suspending")]
         [CounterMeasurement(RemoteMessageCounterName)]
         [GcMeasurement(GcMetric.TotalCollections, GcGeneration.AllGc)]
         public void OneWay(BenchmarkContext context)
@@ -106,7 +107,7 @@ namespace Akka.Remote.Tests.Performance
                 _remoteReceiver.Tell("foo"); // send a remote message
                 ++i;
             }
-            _resetEvent.Wait(1000); //wait up to a second
+            _resetEvent.Wait();
         }
 
         [PerfBenchmark(
@@ -123,19 +124,16 @@ namespace Akka.Remote.Tests.Performance
                 _remoteEcho.Tell("foo", _receiver); // send a remote message
                 ++i;
             }
-            _resetEvent.Wait(1000); //wait up to a second
+            _resetEvent.Wait();
         }
 
         [PerfCleanup]
-        public void Cleanup()
+        public virtual void Cleanup()
         {
-            if (!_resetEvent.IsSet)
-                _resetEvent.Wait(); // wait indefinitely until the event is set
             _resetEvent.Dispose();
-            System1.Shutdown();            
-            System1.AwaitTermination(TimeSpan.FromSeconds(2));
+            System1.Shutdown();
             System2.Shutdown();
-            System2.AwaitTermination(TimeSpan.FromSeconds(2));
+            Task.WaitAll(System1.TerminationTask, System2.TerminationTask);
         }
     }
 }
